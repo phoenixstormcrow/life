@@ -27,7 +27,7 @@ gulp.task('browserify', ['lint'], function () {
 });
 
 gulp.task('watch', [], function() {
-    var bundler = watchify(browserify('./main.js', { debug: true }));
+    var bundler = watchify(browserify('./main.js', { debug: true}));
 
     bundler.on('update', rebundle);
 
