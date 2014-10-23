@@ -12,7 +12,7 @@ var fs = require('fs-extra'),
     browserify = require('browserify');
 
 gulp.task('lint', function () {
-    return gulp.src('./*.js')
+    return gulp.src(['./*.js', './lib/*.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(jshint.reporter('fail'));
@@ -21,7 +21,7 @@ gulp.task('lint', function () {
 gulp.task('browserify', ['lint'], function () {
     return browserify('./main.js')
         .bundle()
-        .pipe(source('main-bundle.js'))
+        .pipe(source('bundle.js'))
         .pipe(gulp.dest('./build'));
 
 });
